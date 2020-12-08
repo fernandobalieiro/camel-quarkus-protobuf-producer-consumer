@@ -1,4 +1,4 @@
-# camel-quarkus-protobuf-producer-consumer project
+# Camel Quarkus Protobuf Producer and Consumer Example
 
 Producer and Consumer using Quarkus Camel, RabbitMQ and Protobuf. 
 

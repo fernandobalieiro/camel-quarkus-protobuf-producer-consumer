@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package org.acme.camel.generated;
+
+option java_package = "org.acme.camel.generated";
+option java_outer_classname = "PersonMessage";
+
+message PersonProto {
+  required string firstName = 1;
+  required string lastName = 2;
+  required int32 age = 3;
+}

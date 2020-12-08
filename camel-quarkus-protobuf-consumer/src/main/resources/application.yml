@@ -1,6 +1,10 @@
+quarkus:
+  http:
+    port: 8081
+
 camel:
   context:
-    name: camel-quarkus-protobuf-producer
+    name: camel-quarkus-protobuf-consumer
 
 rabbitmq:
   url: localhost:5672

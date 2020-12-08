@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+  common:
+    build:
+      context: .
+    volumes:
+      - .:/app
+
+  mongo:
+    image: mongo:3.6
+    networks:
+      default:
+        aliases:
+          - mongodb.test
+    ports:
+      - '27017:27017'
+
+  rabbitmq:
+    image: rabbitmq:3.8.9-management-alpine
+    networks:
+      default:
+        aliases:
+          - rabbitmq.test
+    ports:
+      - '5672:5672'
+    volumes:
+      - ./rabbitmq/rabbitmq.config:/etc/rabbitmq/rabbitmq.config:ro
+      - ./rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro

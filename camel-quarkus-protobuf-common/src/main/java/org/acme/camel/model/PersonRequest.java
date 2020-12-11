@@ -7,27 +7,23 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.SHORT_PREFIX_STYLE;
 
-public class Person {
+public class PersonRequest {
     private final String firstName;
     private final String lastName;
     private final Integer age;
 
-    public Person(final String firstName, final String lastName, final Integer age) {
+    public PersonRequest(final String firstName, final String lastName, final Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public static PersonProto toMessage(final Person person) {
+    public static PersonProto toMessage(final PersonRequest personRequest) {
         return PersonProto.newBuilder()
-                .setFirstName(person.firstName)
-                .setLastName(person.lastName)
-                .setAge(person.age)
+                .setFirstName(personRequest.firstName)
+                .setLastName(personRequest.lastName)
+                .setAge(personRequest.age)
                 .build();
-    }
-
-    public static Person fromMessage(final PersonProto message) {
-        return new Person(message.getFirstName(), message.getLastName(), message.getAge());
     }
 
     public String getFirstName() {

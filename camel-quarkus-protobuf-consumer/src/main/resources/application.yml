@@ -1,10 +1,13 @@
 quarkus:
   http:
     port: 8081
+  mongodb:
+    connection-string: mongodb://mongo.test:27017
+    database: people
 
 camel:
   context:
-    name: camel-quarkus-protobuf-consumer
+    name: protobuf-consumer
 
 rabbitmq:
   url: localhost:5672

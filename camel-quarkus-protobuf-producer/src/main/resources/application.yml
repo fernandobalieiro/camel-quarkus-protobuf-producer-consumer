@@ -1,6 +1,6 @@
 camel:
   context:
-    name: camel-quarkus-protobuf-producer
+    name: protobuf-producer
 
 rabbitmq:
   url: localhost:5672

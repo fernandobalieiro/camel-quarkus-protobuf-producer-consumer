@@ -8,9 +8,9 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>camel-quarkus-protobuf-common</module>
-		<module>camel-quarkus-protobuf-producer</module>
-		<module>camel-quarkus-protobuf-consumer</module>
+        <module>protobuf-common</module>
+		<module>protobuf-producer</module>
+		<module>protobuf-consumer</module>
     </modules>
 
 	<properties>

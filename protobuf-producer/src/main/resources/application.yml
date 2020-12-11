@@ -1,0 +1,18 @@
+quarkus:
+  log:
+    console:
+      format: "%d{HH:mm:ss} %-5p camelBreadCrumbId=%X{camel.breadcrumbId}, traceId=%X{traceId}, parentId=%X{parentId}, spanId=%X{spanId}, sampled=%X{sampled} [%c{2.}] (%t) %s%e%n"
+
+camel:
+  context:
+    name: protobuf-producer
+  main:
+    useMdcLogging: true
+    useBreadcrumb: true
+
+rabbitmq:
+  url: localhost:5672
+  vhost: /
+  queue: people
+  username: guest
+  password: guest

@@ -1,6 +1,6 @@
 # Camel Quarkus Protobuf Producer and Consumer Example
 
-Producer and Consumer using Quarkus Camel, RabbitMQ and Protobuf. 
+Producer and Consumer examples using Quarkus, Apache Camel, RabbitMQ and Protobuf. 
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -8,26 +8,49 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 ## Running the application in dev mode
 
-You can run your application in dev mode that enables live coding using:
+You can run the apps in dev mode that enables live coding.
+
+First, install the project's dependencies:
 ```shell script
-./mvnw compile quarkus:dev
+./mvnw clean install -Dquickly
 ```
+
+Run in dev mode:
+
+### Producer:
+```shell script
+./mvnw quarkus:dev -pl camel-quarkus-protobuf-producer
+```
+
+### Consumer:
+For the Consumer, it's necessary to specify the Debug Port, as port 5005 (default) will be used by the Producer.  
+
+```shell script
+./mvnw quarkus:dev -pl camel-quarkus-protobuf-consumer -Ddebug=5006
+```
+
+### RabbitMQ and MongoDB:
+```shell script
+docker volume prune -f; docker-compose down; docker-compose run -d -p 27017:27017 mongo; docker-compose run -d -p 5672:5672 -p 15672:15672 rabbitmq;
+```
+
 
 ## Packaging and running the application
 
+### Packaging
 The application can be packaged using:
 ```shell script
-./mvnw package
+./mvnw package -Dquickly
 ```
-It produces the `camel-quarkus-protobuf-producer-consumer-1.0.0-SNAPSHOT-runner.jar` file in the `/target` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/lib` directory.
+It produces the `camel-quarkus-protobuf-producer-1.0.0-SNAPSHOT-runner.jar` and `camel-quarkus-protobuf-consumer-1.0.0-SNAPSHOT-runner.jar` under their respective `/target` directories.
+Be aware that these are not _über-jars_ as the dependencies are copied into the `target/lib` directory.
 
-If you want to build an _über-jar_, execute the following command:
+If you want to build _über-jars_, execute the following command:
 ```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
+./mvnw package -Dquarkus.package.type=uber-jar -Dquickly
 ```
 
-The application is now runnable using `java -jar target/camel-quarkus-protobuf-producer-consumer-1.0.0-SNAPSHOT-runner.jar`.
+The application is now runnable using `java -jar target/camel-quarkus-protobuf-<producer_or_consumer>-1.0.0-SNAPSHOT-runner.jar`.
 
 ## Creating a native executable
 
